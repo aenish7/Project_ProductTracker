@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+PRODUCT List
+{% endblock %}
+
+{% block body_content %}
+<h1>Product List</h1>
+<h1><a href="{% url 'product.create' %}">Add Product</a></h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.desc }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+                <a href="#">Edit</a>
+                <a href="#">Show</a>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
