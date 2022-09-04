@@ -10,6 +10,26 @@ def product_index(request):
     context = {"products": products}
     return render(request, 'products/index.html', context)
 
+def product_show(request, id):
+    product = product.objects.get(id=id)
+    template = 'products/show.html'
+    context = {"products": product}
+    return render(request, template, context)
+
+def product_edit(request, id):
+    product = product.objects.get(id=id)
+    template = 'products/edit.html'
+    context = {"products": product}
+    return render(request, template, context)
+
+def product_delete(request, id):
+    product = product.objects.get(id=id)
+    product.delete()
+    
+    products = product.objects.all()
+    template = 'products/index.html'
+    return render(request, template,)
+
 def product_create(request):
     template = 'products/create.html'
     product_form = ProductCreateForm
